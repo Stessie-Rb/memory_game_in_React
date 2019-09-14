@@ -72,6 +72,11 @@ class App extends Component {
       this.setState({ currentPair: [index] })
       return
     }
+    if(currentPair.includes(index)){
+      this.setState({currentPair: []})
+      return
+    }
+
 
     this.handleNewPairClosedBy(index)
   }

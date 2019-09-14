@@ -21,6 +21,7 @@
   
   .memory > .card.visible {
     cursor: not-allowed;
+    pointer-events: none;
   }
   
   .memory > .card > .symbol {
