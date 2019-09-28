@@ -1,21 +1,22 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import './Card.css'
+import './MemoryCard.css'
 
-import Grid from '@material-ui/core/Grid';
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
 
 const HIDDEN_SYMBOL = '❓'
 
-const Card = ({ card, feedback, index, onClick }) => (
-  <Grid item xs={2} className={`card ${feedback}`} onClick={() => onClick(index)}>
-    <span className="symbol">
+const MemoryCard = ({ card, feedback, index, onClick }) => (
+  <Card className={`card ${feedback}`} onClick={() => onClick(index)}>
+    <CardContent className="symbol">
       {feedback === 'hidden' ? HIDDEN_SYMBOL : card}
-    </span>
-  </Grid>
+    </CardContent>
+  </Card>
 )
 
-Card.propTypes = {
+MemoryCard.propTypes = {
   card: PropTypes.string.isRequired,
   feedback: PropTypes.oneOf([
     'hidden',
@@ -26,4 +27,4 @@ Card.propTypes = {
   index: PropTypes.number.isRequired,
   onClick: PropTypes.func.isRequired,
 }
-export default Card
+export default MemoryCard

@@ -3,7 +3,7 @@ import shuffle from 'lodash.shuffle'
 
 import './App.css'
 
-import Card from './Card'
+import MemoryCard from './MemoryCard'
 import GuessCount from './GuessCount'
 import HallOfFame from './HallOfFame'
 import HighScoreInput from './HightScoreInput'
@@ -103,15 +103,17 @@ class App extends Component {
           <GuessCount guesses={guesses} />
         </Grid>
 
-        <Grid container item xs={12} lg={6}>
+        <Grid container item xs={12} lg={6} spacing={3}>
           {cards.map((card, index) => (
-            <Card 
-              card={card}
-              feedback={this.getFeedbackForCard(index)}
-              index={index}
-              key={index}
-             onClick={this.handleCardClick}
-            />
+            <Grid item xs={2}> 
+              <MemoryCard 
+                card={card}
+                feedback={this.getFeedbackForCard(index)}
+                index={index}
+                key={index}
+              onClick={this.handleCardClick}
+              />
+            </Grid>
           ))}
         </Grid>
 
