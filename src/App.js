@@ -1,29 +1,3 @@
-// import React from 'react';
-// import logo from './logo.svg';
-// import './App.css';
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <header className="App-header">
-//         <img src={logo} className="App-logo" alt="logo" />
-//         <p>
-//           Edit <code>src/App.js</code> and save to reload.
-//         </p>
-//         <a
-//           className="App-link"
-//           href="https://reactjs.org"
-//           target="_blank"
-//           rel="noopener noreferrer"
-//         >
-//           Learn React
-//         </a>
-//       </header>
-//     </div>
-//   );
-// }
-
-// export default App;
 import React, { Component } from 'react'
 import shuffle from 'lodash.shuffle'
 
@@ -33,6 +7,9 @@ import Card from './Card'
 import GuessCount from './GuessCount'
 import HallOfFame from './HallOfFame'
 import HighScoreInput from './HightScoreInput'
+
+import Grid from '@material-ui/core/Grid';
+
 
 
 const SIDE = 6
@@ -117,26 +94,35 @@ class App extends Component {
     const won = matchedCardIndices.length === cards.length
 
     return (
-      <div className="memory">
-        <GuessCount guesses={guesses} />
-        {cards.map((card, index) => (
-          <Card
-            card={card}
-            feedback={this.getFeedbackForCard(index)}
-            index={index}
-            key={index}
-            onClick={this.handleCardClick}
-          />
-        ))}
-        {
-          won &&
-          (hallOfFame ? (
-            <HallOfFame entries={hallOfFame} />
-          ) : (
+      <Grid container direction="column" spacing={10} className="memory">
+
+        <Grid item>
+          <GuessCount guesses={guesses} />
+        </Grid>
+      
+        <Grid item>
+          {cards.map((card, index) => (
+            <Card 
+              card={card}
+              feedback={this.getFeedbackForCard(index)}
+              index={index}
+              key={index}
+             onClick={this.handleCardClick}
+            />
+          ))}
+        </Grid>
+
+        <Grid item>
+          {
+            won &&
+            (hallOfFame ? (
+              <HallOfFame entries={hallOfFame} />
+            ) : (
               <HighScoreInput guesses={guesses} onStored={this.displayHallOfFame} />
             ))
-        }
-      </div>
+          }
+        </Grid>
+      </Grid>
     )
   }
 }
