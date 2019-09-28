@@ -3,14 +3,16 @@ import React from 'react'
 
 import './Card.css'
 
+import Grid from '@material-ui/core/Grid';
+
 const HIDDEN_SYMBOL = '❓'
 
 const Card = ({ card, feedback, index, onClick }) => (
-  <div className={`card ${feedback}`} onClick={() => onClick(index)}>
+  <Grid item xs={2} className={`card ${feedback}`} onClick={() => onClick(index)}>
     <span className="symbol">
       {feedback === 'hidden' ? HIDDEN_SYMBOL : card}
     </span>
-  </div>
+  </Grid>
 )
 
 Card.propTypes = {

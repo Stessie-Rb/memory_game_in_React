@@ -3,7 +3,12 @@ import React from 'react'
 
 import './GuessCount.css'
 
-const GuessCount = ({guesses}) => <div className="guesses">Guesses: {guesses}</div>
+import { Typography } from '@material-ui/core';
+
+const GuessCount = ({guesses}) =>
+        <Typography variant="subtitle1" className="guesses" >
+            Guesses: {guesses}
+        </Typography>
 
 GuessCount.propTypes={
     guesses: PropTypes.number.isRequired,

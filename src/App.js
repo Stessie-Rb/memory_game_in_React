@@ -9,8 +9,7 @@ import HallOfFame from './HallOfFame'
 import HighScoreInput from './HightScoreInput'
 
 import Grid from '@material-ui/core/Grid';
-
-
+import { Typography } from '@material-ui/core';
 
 const SIDE = 6
 export const SYMBOLS = '😀🎉💖🎩🐶🐱🦄🐬🌍🌛🌞💫🍎🍌🍓🍐🍟🍿'
@@ -36,7 +35,6 @@ class App extends Component {
     return shuffle(result)
   }
 
-
   // Arrow fx for binding
   handleCardClick = index => {
     const { currentPair } = this.state
@@ -53,7 +51,6 @@ class App extends Component {
       this.setState({currentPair: []})
       return
     }
-
 
     this.handleNewPairClosedBy(index)
   }
@@ -94,13 +91,19 @@ class App extends Component {
     const won = matchedCardIndices.length === cards.length
 
     return (
-      <Grid container direction="column" spacing={10} className="memory">
+      <Grid container direction="column" spacing={5} className="memory">
 
-        <Grid item>
+        <Grid item xs={12} lg={6}>
+          <Typography variant="h4">
+            Memory Game
+          </Typography>
+        </Grid>
+
+        <Grid item xs={12} lg={6}>
           <GuessCount guesses={guesses} />
         </Grid>
-      
-        <Grid item>
+
+        <Grid container item xs={12} lg={6}>
           {cards.map((card, index) => (
             <Card 
               card={card}
@@ -112,7 +115,7 @@ class App extends Component {
           ))}
         </Grid>
 
-        <Grid item>
+        <Grid item xs={12} lg={6}>
           {
             won &&
             (hallOfFame ? (
